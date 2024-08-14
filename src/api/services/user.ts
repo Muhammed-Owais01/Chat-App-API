@@ -50,6 +50,9 @@ class UserServices {
     async addFriend(userId: number, receiverId: number): Promise<Friends> {
         const user: User = await this.getUserById(userId);
 
+        const existingFriend = await FriendsDAO.getFriendship(userId, receiverId);
+        if (existingFriend) throw new RequestError(ExceptionType.ALREADY_FRIENDS);
+
         const friend: Friends | null = await FriendsDAO.addFriend(userId, receiverId);
         if (!friend) throw new RequestError(ExceptionType.INTERNAL_ERROR);
 

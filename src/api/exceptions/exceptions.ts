@@ -9,6 +9,7 @@ export enum ExceptionType {
     INVALID_TOKEN = 'INVALID_TOKEN',
     UNAUTHORIZED = 'UNAUTHORIZED',
     FRIENDS_NOT_FOUND = 'FRIENDS_NOT_FOUND',
+    ALREADY_FRIENDS = 'ALREADY_FRIENDS',
 }
 
 export const Exceptions: Record<ExceptionType, { status: number, message: string }> = {
@@ -22,4 +23,5 @@ export const Exceptions: Record<ExceptionType, { status: number, message: string
     [ExceptionType.INVALID_TOKEN]: { status: 401, message: 'Authorization Failed: Token not provided'},
     [ExceptionType.UNAUTHORIZED]: { status: 403, message: 'Unauthorized'},
     [ExceptionType.FRIENDS_NOT_FOUND]: { status: 404, message: 'Friends do not exist'},
+    [ExceptionType.ALREADY_FRIENDS]: { status: 409, message: 'Two Users are already friends'}
 }

@@ -18,7 +18,7 @@ class UserController {
     }
 
     async get_user_by_name(req: Request, res: Response, next: NextFunction): Promise<ReturnResponse> {
-        const username: string = req.body;
+        const username: string = req.params.username;
         const user: User = await UserServices.getUserByName(username);
 
         return res.status(200).json({ 
