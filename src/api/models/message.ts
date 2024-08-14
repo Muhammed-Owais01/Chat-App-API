@@ -23,7 +23,7 @@ Message.init(
             autoIncrement: true,
         },
         content: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(1024),
             allowNull: false,
         },
         userId: {

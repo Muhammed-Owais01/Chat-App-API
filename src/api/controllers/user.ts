@@ -7,12 +7,22 @@ import { ExceptionType } from "../exceptions/exceptions";
 import Friends from "../models/friends";
 
 class UserController {
-    async get_user(req: Request, res: Response, next: NextFunction): Promise<ReturnResponse> {
+    async get_user_by_id(req: Request, res: Response, next: NextFunction): Promise<ReturnResponse> {
         const userId: number = parseInt(req.params.userId);
         const user: User = await UserServices.getUserById(userId);
 
         return res.status(200).json({ 
             userId: user.id,
+            username: user.username
+         });
+    }
+
+    async get_user_by_name(req: Request, res: Response, next: NextFunction): Promise<ReturnResponse> {
+        const username: string = req.body;
+        const user: User = await UserServices.getUserByName(username);
+
+        return res.status(200).json({ 
+            id: user.id,
             username: user.username
          });
     }

@@ -5,7 +5,9 @@ import checkAuth from "../middleware/check-auth";
 
 const router: Router = Router();
 
-router.get('/:userId', asyncHandler(UserController.get_user));
+router.get('/:userId', asyncHandler(UserController.get_user_by_id));
+
+router.get('/username/', asyncHandler(UserController.get_user_by_name));
 
 router.get('/', checkAuth, asyncHandler(UserController.get_all_friends));
 

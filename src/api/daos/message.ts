@@ -42,7 +42,7 @@ class MessageDAO {
                     }
                 ]
             },
-            order: [['timestamp', 'ASC']]
+            order: [['timestamp', 'DESC']]
          });
         return messages;
     }
